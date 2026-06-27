@@ -1,69 +1,58 @@
 import Link from "next/link";
+import ScoreCard from "./components/ScoreCard";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-100">
 
-      <header className="bg-blue-700 text-white py-8 shadow">
-        <div className="max-w-5xl mx-auto px-6">
-          <h1 className="text-4xl font-bold">
+      <header className="bg-blue-700 text-white shadow">
+        <div className="max-w-6xl mx-auto px-8 py-10">
+
+          <h1 className="text-5xl font-bold">
             DermScore
           </h1>
 
-          <p className="mt-2 text-blue-100">
-            Calculadoras e escores em Dermatologia
+          <p className="text-blue-100 mt-3 text-lg">
+            Plataforma de escores e calculadoras em Dermatologia
           </p>
+
         </div>
       </header>
 
-      <section className="max-w-5xl mx-auto p-8">
+      <section className="max-w-6xl mx-auto p-8">
 
-        <h2 className="text-2xl font-bold mb-6">
-          Ferramentas disponíveis
+        <h2 className="text-3xl font-bold mb-8">
+          Ferramentas
         </h2>
 
-        <Link
-          href="/dlqi"
-          className="block bg-white rounded-2xl shadow hover:shadow-lg transition p-6"
-        >
-          <h3 className="text-2xl font-semibold text-blue-700">
-            DLQI
-          </h3>
+        <div className="grid md:grid-cols-2 gap-6">
 
-          <p className="mt-2 text-gray-600">
-            Dermatology Life Quality Index
-          </p>
+          <ScoreCard
+            title="DLQI"
+            description="Dermatology Life Quality Index"
+            href="/dlqi"
+          />
 
-          <p className="mt-4 text-sm text-gray-500">
-            Avaliação do impacto da doença dermatológica na qualidade de vida.
-          </p>
-        </Link>
+          <ScoreCard
+            title="PASI"
+            description="Psoriasis Area Severity Index"
+            href="/"
+            available={false}
+          />
 
-        <div className="mt-10">
+          <ScoreCard
+            title="EASI"
+            description="Eczema Area Severity Index"
+            href="/"
+            available={false}
+          />
 
-          <h2 className="text-2xl font-bold mb-4">
-            Em breve
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-4">
-
-            <div className="bg-white rounded-xl p-5 shadow text-gray-500">
-              PASI
-            </div>
-
-            <div className="bg-white rounded-xl p-5 shadow text-gray-500">
-              EASI
-            </div>
-
-            <div className="bg-white rounded-xl p-5 shadow text-gray-500">
-              IHS4
-            </div>
-
-            <div className="bg-white rounded-xl p-5 shadow text-gray-500">
-              POEM
-            </div>
-
-          </div>
+          <ScoreCard
+            title="IHS4"
+            description="International Hidradenitis Severity Score System"
+            href="/"
+            available={false}
+          />
 
         </div>
 

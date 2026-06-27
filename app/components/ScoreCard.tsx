@@ -15,16 +15,24 @@ export default function ScoreCard({
 }: Props) {
   if (!available) {
     return (
-      <div className="bg-white rounded-2xl shadow p-6 opacity-60">
-        <h2 className="text-2xl font-bold">{title}</h2>
+      <div className="bg-white rounded-2xl shadow-md p-6 border">
 
-        <p className="mt-2 text-gray-500">
+        <div className="flex justify-between items-center">
+
+          <h2 className="text-2xl font-bold text-gray-700">
+            {title}
+          </h2>
+
+          <span className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-full">
+            Em breve
+          </span>
+
+        </div>
+
+        <p className="text-gray-500 mt-3">
           {description}
         </p>
 
-        <span className="inline-block mt-4 text-sm bg-gray-200 px-3 py-1 rounded-full">
-          Em breve
-        </span>
       </div>
     );
   }
@@ -32,15 +40,24 @@ export default function ScoreCard({
   return (
     <Link
       href={href}
-      className="block bg-white rounded-2xl shadow hover:shadow-xl transition p-6"
+      className="block bg-white rounded-2xl shadow-md hover:shadow-xl transition p-6 border hover:border-blue-500"
     >
-      <h2 className="text-2xl font-bold text-blue-700">
-        {title}
-      </h2>
+      <div className="flex justify-between items-center">
 
-      <p className="mt-2 text-gray-600">
+        <h2 className="text-2xl font-bold text-blue-700">
+          {title}
+        </h2>
+
+        <span className="bg-blue-100 text-blue-700 text-sm px-3 py-1 rounded-full">
+          Disponível
+        </span>
+
+      </div>
+
+      <p className="text-gray-600 mt-3">
         {description}
       </p>
+
     </Link>
   );
 }
