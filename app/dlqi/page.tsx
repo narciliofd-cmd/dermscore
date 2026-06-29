@@ -4,8 +4,10 @@ import { useState } from "react";
 import QuestionCard from "../components/QuestionCard";
 import ResultCard from "../components/ResultCard";
 import { dlqiQuestions } from "../data/dlqi";
+import { useRouter } from "next/navigation";
 
 export default function DLQIPage() {
+  const router = useRouter();
   const [started, setStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -69,27 +71,34 @@ export default function DLQIPage() {
     };
   }
 
-  function handleShare() {
-    const result = getInterpretation(score);
+ function handleShare() {
+  const result = getInterpretation(score);
 
-    const text = `DermScore
+  const text = `DermScore
+https://dermscore.com.br
 
-DLQI: ${score}/30
+Resultado do DLQI
 
+Pontuação: ${score}/30
+
+Interpretação:
 ${result.text}
 
-Data: ${new Date().toLocaleDateString("pt-BR")}`;
+Resultado gerado pelo DermScore.
 
-    if (navigator.share) {
-      navigator.share({
-        title: "Resultado do DLQI",
-        text,
-      });
-    } else {
-      navigator.clipboard.writeText(text);
-      alert("Resultado copiado para a área de transferência.");
-    }
+${new Date().toLocaleDateString("pt-BR")}`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Resultado do DLQI",
+      text,
+      url: "https://dermscore.com.br",
+    });
+  } else {
+    navigator.clipboard.writeText(text);
+    alert("Resultado copiado para a área de transferência.");
   }
+}
 
   // ======================
   // TELA INICIAL
@@ -150,21 +159,22 @@ Data: ${new Date().toLocaleDateString("pt-BR")}`;
   // RESULTADO
   // ======================
 
-  if (finished) {
-    const result = getInterpretation(score);
+ if (finished) {
+  const result = getInterpretation(score);
 
-    return (
-      <main className="min-h-screen bg-slate-100 flex items-center justify-center p-6">
-        <ResultCard
-          score={score}
-          interpretation={result.text}
-          color={result.color}
-          onRestart={handleRestart}
-          onShare={handleShare}
-        />
-      </main>
-    );
-  }
+  return (
+    <main className="min-h-screen bg-slate-100 flex items-center justify-center p-6">
+      <ResultCard
+        score={score}
+        interpretation={result.text}
+        color={result.color}
+        onRestart={handleRestart}
+        onShare={handleShare}
+        onHome={() => router.push("/")}
+      />
+    </main>
+  );
+}
 
   const question = dlqiQuestions[currentQuestion];
 
