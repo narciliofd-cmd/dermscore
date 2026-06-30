@@ -30,63 +30,69 @@ export default function Home() {
 
       <section className="max-w-6xl mx-auto px-8 py-10">
 
-        <div className="flex justify-between items-center mb-8">
+  <h2 className="text-3xl font-bold mb-8">
+    Escores
+  </h2>
 
-          <h2 className="text-3xl font-bold">
-            Ferramentas
-          </h2>
+  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-          <span className="text-gray-500">
-            1 de 20 disponíveis
-          </span>
+    <ScoreCard
+      title="DLQI"
+      description="Dermatology Life Quality Index"
+      href="/dlqi"
+    />
 
-        </div>
+    <ScoreCard
+      title="PASI"
+      description="Psoriasis Area Severity Index"
+      href="/pasi"
+    />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <ScoreCard
+      title="EASI"
+      description="Eczema Area Severity Index"
+      href="/"
+      available={false}
+    />
 
-          <ScoreCard
-            title="DLQI"
-            description="Dermatology Life Quality Index"
-            href="/dlqi"
-          />
+    <ScoreCard
+      title="IHS4"
+      description="International Hidradenitis Severity Score System"
+      href="/"
+      available={false}
+    />
 
-         <ScoreCard
-  title="PASI"
-  description="Psoriasis Area Severity Index"
-  href="/pasi"
-/>
+    <ScoreCard
+      title="POEM"
+      description="Patient-Oriented Eczema Measure"
+      href="/"
+      available={false}
+    />
 
-          <ScoreCard
-            title="EASI"
-            description="Eczema Area Severity Index"
-            href="/"
-            available={false}
-          />
+    <ScoreCard
+      title="CDLQI"
+      description="Children's Dermatology Life Quality Index"
+      href="/"
+      available={false}
+    />
 
-          <ScoreCard
-            title="IHS4"
-            description="International Hidradenitis Severity Score System"
-            href="/"
-            available={false}
-          />
+  </div>
 
-          <ScoreCard
-            title="POEM"
-            description="Patient-Oriented Eczema Measure"
-            href="/"
-            available={false}
-          />
+  <h2 className="text-3xl font-bold mt-16 mb-8">
+    Critérios Diagnósticos
+  </h2>
 
-          <ScoreCard
-            title="CDLQI"
-            description="Children's Dermatology Life Quality Index"
-            href="/"
-            available={false}
-          />
+  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
-        </div>
+    <ScoreCard
+      title="Hanifin & Rajka"
+      description="Critérios diagnósticos para Dermatite Atópica"
+      href="/hannifin-rajka"
+    />
 
-      </section>
+  </div>
+
+</section>
 
       <footer className="border-t mt-20 bg-white">
 

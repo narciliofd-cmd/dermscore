@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import PASIRegionCard from "../components/PASIRegionCard";
+import PASIResultCard from "../components/PASIResultCard";
 import {
   bodyRegions,
   severityOptions,
@@ -69,6 +70,37 @@ export default function PASIPage() {
     setResult(total);
   }
 
+  function handleRestart() {
+    setRegions({
+      head: {
+        area: 0,
+        erythema: 0,
+        thickness: 0,
+        scaling: 0,
+      },
+      upper: {
+        area: 0,
+        erythema: 0,
+        thickness: 0,
+        scaling: 0,
+      },
+      trunk: {
+        area: 0,
+        erythema: 0,
+        thickness: 0,
+        scaling: 0,
+      },
+      lower: {
+        area: 0,
+        erythema: 0,
+        thickness: 0,
+        scaling: 0,
+      },
+    });
+
+    setResult(null);
+  }
+
   return (
     <main className="min-h-screen bg-slate-100">
 
@@ -122,20 +154,11 @@ export default function PASIPage() {
         </button>
 
         {result !== null && (
-          <div className="mt-10 bg-white rounded-2xl shadow-xl border border-slate-200 p-8">
-
-            <h2 className="text-center text-slate-500 text-lg">
-              Resultado
-            </h2>
-
-            <p className="text-center text-7xl font-bold text-blue-700 mt-4">
-              {result}
-            </p>
-
-            <p className="text-center text-slate-600 mt-2">
-              PASI
-            </p>
-
+          <div className="mt-10">
+            <PASIResultCard
+              score={result}
+              onRestart={handleRestart}
+            />
           </div>
         )}
 
